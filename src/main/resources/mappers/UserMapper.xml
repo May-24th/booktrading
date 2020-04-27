@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.booktrading.mybatis.mapper.UserMapper">
+
+    <insert id="saveUser">
+        INSERT INTO `bt_user` (`username`,
+                                `password`,
+                                `tel`,
+                                `address`)
+        VALUES (#{user.username},
+                #{user.password},
+                #{user.tel},
+                #{user.address})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE
+        FROM `bt_user`
+        WHERE `id` = #{id}
+    </delete>
+</mapper>
