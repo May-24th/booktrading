@@ -13,6 +13,10 @@
                 #{user.address})
     </insert>
 
+    <select id="selectUserById" parameterType="Long" resultType="User">
+        select * from bt_user where id=#{id}
+    </select>
+
     <delete id="deleteById">
         DELETE
         FROM `bt_user`

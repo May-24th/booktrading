@@ -12,4 +12,13 @@
         FROM `bt_category`
         WHERE `id` = #{id}
     </delete>
+
+    <update id="updateCategory" parameterType="Category">
+        update bt_category set name=#{name} where id=#{id}
+    </update>
+
+    <select id="get" parameterType="Long" resultType="Category">
+        select * from bt_category where id=#{id}
+    </select>
+
 </mapper>

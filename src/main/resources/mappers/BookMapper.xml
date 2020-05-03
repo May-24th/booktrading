@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.booktrading.mybatis.mapper.BookMapper">
+
+    <insert id="addBook" useGeneratedKeys="true" keyProperty="id" parameterType="Book">
+        INSERT INTO `bt_book` (name,price,ISBN,publisher,cid,uid)
+        VALUES (#{name},#{price},#{ISBN},#{publisher},#{category.id},#{user.id})
+    </insert>
+
+    <delete id="deleteBookById" parameterType="Long">
+        DELETE
+        FROM `bt_book`
+        WHERE `id` = #{id}
+    </delete>
+
+    <update id="updateBook" parameterType="Book">
+        update bt_book set name=#{name},price=#{price},ISBN=#{ISBN},publisher=#{publisher},cid=#{category.id},uid=#{user.id} where id=#{id}
+    </update>
+
+    <select id="getBookById" parameterType="Long" resultType="Book" resultMap="bookResultMap">
+        select * from bt_book where id=#{id}
+    </select>
+    
+    <resultMap id="bookResultMap" type="Book">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="price" property="price" />
+        <result column="ISBN" property="ISBN" />
+        <result column="publisher" property="publisher" />
+        <association property="user" column="uid" select="com.lh.booktrading.mybatis.mapper.UserMapper.selectUserById"/>
+        <association property="category" column="cid" select="com.lh.booktrading.mybatis.mapper.CategoryMapper.get"/>
+
+    </resultMap>
+    
+</mapper>

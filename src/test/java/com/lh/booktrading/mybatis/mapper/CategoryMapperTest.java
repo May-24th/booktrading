@@ -22,4 +22,16 @@ class CategoryMapperTest extends BooktradingApplicationTests {
         int del = categoryMapper.deleteCategoryById((long) 3);
         Assert.assertEquals(1,del);
     }
+
+    @Test
+    void updateCategory() {
+        int update =categoryMapper.updateCategory(new Category((long)2,"文化"));
+        Assert.assertEquals(1,update);
+    }
+
+    @Test
+    void get() {
+        Category category = categoryMapper.get((long)1);
+        Assert.assertNotNull(category);
+    }
 }

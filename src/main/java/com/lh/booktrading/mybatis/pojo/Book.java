@@ -14,6 +14,6 @@ public class Book {
     private String ISBN;
     private String publisher;
     private Category category;
-    private User owner;
+    private User user;
     private BookImage bookImage;
 }

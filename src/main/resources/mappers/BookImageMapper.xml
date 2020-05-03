@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.booktrading.mybatis.mapper.BookImageMapper">
+
+    <insert id="addBookImage" useGeneratedKeys="true" keyProperty="id" parameterType="BookImage">
+        INSERT INTO `bt_bookimage` (`bid`)
+        VALUES (#{book.id})
+    </insert>
+
+    <delete id="deleteByBookId" parameterType="Long">
+        DELETE
+        FROM `bt_bookimage`
+        WHERE `bid` = #{bid}
+    </delete>
+
+    <update id="updateBookImage" parameterType="BookImage">
+        update bt_bookimage set bid=#{book.id} where id=#{id}
+    </update>
+
+    <select id="getByBookId" parameterType="Long" resultType="BookImage" resultMap="bookImageResultMap">
+        select * from bt_bookimage where bid=#{bid}
+    </select>
+
+    <resultMap id="bookImageResultMap" type="BookImage">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <association property="book" column="bid" select="com.lh.booktrading.mybatis.mapper.BookMapper.getBookById"/>
+    </resultMap>
+</mapper>

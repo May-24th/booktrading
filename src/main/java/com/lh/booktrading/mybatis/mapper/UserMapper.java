@@ -14,8 +14,7 @@ public interface UserMapper {
     @Select("SELECT * FROM bt_user")
     List<User> selectAllUser();
 
-    @Select("SELECT * FROM bt_user WHERE id = #{id}")
-    User selectUserById(@Param("id") Long id);
+    User selectUserById(Long id);
 
     int deleteById(@Param("id") Long id);
 
