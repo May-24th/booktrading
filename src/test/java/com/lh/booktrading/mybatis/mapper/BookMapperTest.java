@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookMapperTest extends BooktradingApplicationTests {
@@ -17,7 +19,7 @@ class BookMapperTest extends BooktradingApplicationTests {
     private BookMapper bookMapper;
     Book book = new Book((long) 2, "解忧杂货店", (float) 39.50, "9787544270878", "南海出版公司",
             new Category((long) 2, "文化"),
-            new User((long) 2, "1002", "1002", "18209315709", "太原"), new BookImage());
+            new User((long) 2, "1002", "1002", "18209315709", "太原"));
 
     @Test
     void addBook() {
@@ -42,5 +44,17 @@ class BookMapperTest extends BooktradingApplicationTests {
     void getBookById() {
         Book book = bookMapper.getBookById((long) 3);
         Assert.assertNotNull(book);
+    }
+
+    @Test
+    void listByBookCategoryId() {
+        List<Book> books=bookMapper.listByBookCategoryId((long) 1);
+        Assert.assertNotNull(books);
+    }
+
+    @Test
+    void listByBookUserId() {
+        List<Book> books=bookMapper.listByBookUserId((long) 2);
+        Assert.assertNotNull(books);
     }
 }

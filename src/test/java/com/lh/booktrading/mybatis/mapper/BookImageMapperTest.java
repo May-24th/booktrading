@@ -17,7 +17,7 @@ class BookImageMapperTest extends BooktradingApplicationTests {
     private BookImageMapper bookImageMapper;
     Book book=new Book((long)1, "活着", (float) 20.00, "9787506365437", "作家出版社",
             new Category((long) 1, "文学"),
-            new User((long)2,"1001","1001","18209315709","太原"), new BookImage());
+            new User((long)2,"1001","1001","18209315709","太原"));
     @Test
     void addBookImage() {
 

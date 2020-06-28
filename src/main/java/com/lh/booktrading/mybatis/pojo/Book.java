@@ -15,5 +15,5 @@ public class Book {
     private String publisher;
     private Category category;
     private User user;
-    private BookImage bookImage;
+//    private BookImage bookImage;
 }

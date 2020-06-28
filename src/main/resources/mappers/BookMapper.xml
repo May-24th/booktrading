@@ -20,7 +20,15 @@
     <select id="getBookById" parameterType="Long" resultType="Book" resultMap="bookResultMap">
         select * from bt_book where id=#{id}
     </select>
-    
+
+    <select id="listByBookCategoryId" parameterType="Long" resultType="Book" resultMap="bookResultMap">
+        select * from bt_book where cid=#{cid}
+    </select>
+
+    <select id="listByBookUserId"  resultType="Book" resultMap="bookResultMap">
+        select * from bt_book where uid=#{uid}
+    </select>
+
     <resultMap id="bookResultMap" type="Book">
         <id column="id" property="id" />
         <result column="name" property="name" />
