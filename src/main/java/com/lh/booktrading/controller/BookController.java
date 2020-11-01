@@ -1,6 +1,4 @@
 package com.lh.booktrading.controller;
-
-
 import com.lh.booktrading.mybatis.mapper.BookMapper;
 import com.lh.booktrading.mybatis.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
